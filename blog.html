@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daniela Passos - Blog</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>My Blog Articles</h1>
+    <div id="articles"></div>
+  </div>
+  <script>
+
+    
+const username = 'danielapassos';
+
+fetch(`https://api.hashnode.com/`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    query: `
+      {
+        user(username: "${username}") {
+          publication {
+            posts {
+              title
+              slug
+            }
+          }
+        }
+      }
+    `
+  }),
+})
+.then(response => response.json())
+.then(data => {
+  const articles = data.data.user.publication.posts;
+  let articlesHtml = '';
+
+  articles.forEach(article => {
+    articlesHtml += `<a href="https://hashnode.com/post/${article.slug}">${article.title}</a><br>`;
+  });
+
+  document.getElementById('articles').innerHTML = articlesHtml;
+});
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+#my-photo {
+    border-radius: 50%;
+    width: 150px;
+    height: auto;
+}
+
+#about-me h1 {
+    font-size: 24px;
+}
+
+#about-me p {
+    font-size: 18px;
+}
+
+.fact {
+    width: 650px;
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid rgb(222, 222, 222);
+    margin-bottom: 10px;
+}
+
+.fact:hover {
+    background-color: rgb(255, 248, 237);
+}
+
+#projects a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: rgb(255, 153, 36);
+}
+
+#resume a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: underline;
+    color: green;
+}
+
+#photo-section,
+#about-me,
+#fun-facts,
+#projects,
+#resume {
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+#about-me,
+#fun-facts,
+#projects,
+#resume {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
