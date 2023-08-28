@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Post</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+  </div>
+  <div class="container">
+    <div id="single-post"></div>
+  </div>
+  <script>
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const postSlug = urlParams.get('slug');
+
+fetch(`https://api.hashnode.com/`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    query: `
+      {
+        post(slug: "${postSlug}") {
+          title
+          content
+        }
+      }
+    `
+  }),
+})
+.then(response => response.json())
+.then(data => {
+  const post = data.data.post;
+  document.getElementById('single-post').innerHTML = `
+    <h1>${post.title}</h1>
+    <div>${post.content}</div>
+  `;
+});
+
+
+  </script>
+</body>
+</html>

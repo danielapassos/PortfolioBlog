@@ -24,15 +24,18 @@ h1 {
 }
 
 .fact {
-    width: 650px;
-    height: 60px;
-    border-radius: 8px;
-    border: 1px solid rgb(222, 222, 222);
-    margin-bottom: 10px;
-}
+    width: auto;  /* Width will adjust according to the text */
+    padding: 10px 20px;  /* Padding on all sides */
+    border: 1px solid black;
+    text-align: center;  /* Center the text horizontally */
+    display: inline-block;  /* Make it an inline element */
+    margin: 10px;  /* Add some margin around each block */
+  }
+  
 
 .fact:hover {
     background-color: rgb(255, 248, 237);
+    font-weight: bold;
 }
 
 #projects a {
@@ -72,3 +75,17 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.menu {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .menu a {
+    margin: 0 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
