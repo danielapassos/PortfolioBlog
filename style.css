@@ -24,18 +24,21 @@ h1 {
 }
 
 .fact {
-    width: auto;  /* Width will adjust according to the text */
-    padding: 10px 20px;  /* Padding on all sides */
-    border: 1px solid black;
-    text-align: center;  /* Center the text horizontally */
-    display: inline-block;  /* Make it an inline element */
-    margin: 10px;  /* Add some margin around each block */
-  }
+    width: auto; 
+    padding: 10px 20px; 
+    border: 1px solid rgb(183, 183, 183);
+    text-align: center;
+    display: inline-block; 
+    margin: 10px;  
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+}
   
 
 .fact:hover {
     background-color: rgb(255, 248, 237);
-    font-weight: bold;
+    font-weight: 600;
 }
 
 #projects a {
@@ -87,5 +90,29 @@ h1 {
     margin: 0 20px;
     color: white;
     text-decoration: none;
+  }
+  
+.blog-post-content {
+    margin: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #333;
+  }
+  
+  a {
+    color: #cae2fc;
+    text-decoration: none;
+  }
+  
+  ul, ol {
+    margin-left: 1em;
+  }
+  
+  code {
+    background-color: #f1f1f1;
+    padding: 2px 4px;
   }
   

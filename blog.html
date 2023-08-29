@@ -44,8 +44,9 @@
         let articlesHtml = '';
 
         articles.forEach(article => {
-            articlesHtml += `<a href="blog-post.html?slug=${article.slug}">${article.title}</a><br>`;
+            articlesHtml += `<a class="fact" href="blog-post.html?slug=${article.slug}">${article.title}</a><br>`;
         });
+
 
         document.getElementById('articles').innerHTML = articlesHtml;
         });

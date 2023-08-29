@@ -1,48 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Blog Post</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Blog Post</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div class="menu">
-    <a href="index.html">Home</a>
-    <a href="blog.html">Blog</a>
-  </div>
-  <div class="container">
-    <div id="single-post"></div>
-  </div>
-  <script>
+    <div class="container">
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+        </div>
+        <h1 id="post-title">Loading...</h1>
+        <div class="markdown-content">
+            <div id="post-content">Loading...</div>
+          </div>
+    </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const postSlug = urlParams.get('slug');
+  
+    fetch('https://gql.hashnode.com/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            query: `
+                query Publication {
+                    publication(host: "danizeres.dev") {
+                        post(slug: "${postSlug}") {
+                            title
+                            content {
+                                markdown
+                            }
+                        }
+                    }
+                }
+            `
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        const post = data.data.publication.post;
+        document.getElementById('post-title').textContent = post.title;
+        document.getElementById('post-content').innerHTML = post.content.markdown;
+        document.title = `${post.title} - Daniela Passos`;
+    })
+    .catch(error => {
+        console.error('There was an error:', error);
+    });
+});    
 
-fetch(`https://api.hashnode.com/`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    query: `
-      {
-        post(slug: "${postSlug}") {
-          title
-          content
-        }
-      }
-    `
-  }),
-})
-.then(response => response.json())
-.then(data => {
-  const post = data.data.post;
-  document.getElementById('single-post').innerHTML = `
-    <h1>${post.title}</h1>
-    <div>${post.content}</div>
-  `;
-});
 
-
-  </script>
+    </script>
 </body>
 </html>
