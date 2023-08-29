@@ -11,8 +11,18 @@ h1 {
 
 #my-photo {
     border-radius: 50%;
-    width: 150px;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 100px;
     height: auto;
+}
+
+#intro {
+    display: flex;
+}
+
+#about-me {
+    margin-top: 20px;
 }
 
 #about-me h1 {
@@ -115,4 +125,5 @@ h1, h2, h3 {
     background-color: #f1f1f1;
     padding: 2px 4px;
   }
+  
   
