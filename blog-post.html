@@ -37,6 +37,7 @@
                             title
                             content {
                                 markdown
+                                html
                             }
                         }
                     }
@@ -49,7 +50,7 @@
         console.log(data)
         const post = data.data.publication.post;
         document.getElementById('post-title').textContent = post.title;
-        document.getElementById('post-content').innerHTML = post.content.markdown;
+        document.getElementById('post-content').innerHTML = post.content.html;
         document.title = `${post.title} - Daniela Passos`;
     })
     .catch(error => {
